@@ -1,0 +1,46 @@
+﻿@using EF;
+@{
+    Layout = null;
+    DaiLy daili = ViewBag.daili as DaiLy;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+    <div class="container">
+
+        <h2 class="text-left">Cập nhật đại lý</h2>
+        <br />
+        <form class="form-horizontal" method="post" action="/DaiLies/Edit2">           
+            <input type="hidden" class="form-control" name="id" value="@daili.idDL" />
+            <div class="form-group" style="width:20%">
+                <label>Tên đại lý</label>
+                <input type="text" class="form-control" name="ten" value="@daili.tenDaiLy" />
+            </div>
+            <div class="form-group" style="width:24%">
+                <label>Địa chỉ</label>
+                <input type="text" class="form-control" name="diachi" value="@daili.diaChi" />
+            </div>
+            <div class="form-group" style="width:10%">
+                <label>Số điện thoại</label>
+                <input type="text" class="form-control" name="sdt" value="@daili.sDT" />
+            </div>
+
+            <div class="form-group" style="width:6%">
+                <input type="submit" class="btn btn-default" value="Cập Nhật" />
+            </div>
+        </form>
+
+        <a href="/Dailies/Index"><h3>Quay lại</h3></a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿@using EF;
+@{
+    DaiLy dl = ViewBag.DaiLy as DaiLy;
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">    
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+    <div class="container">
+        <h2 class="text-center">Chi tiết sách đại lý lấy</h2>  
+        <h3 class="text-center">Đại lý:&nbsp;@dl.tenDaiLy</h3> 
+        <div class="row">
+            <div class="form-group">
+                <div class="col-xs-1 col-sm-1">
+                    <label class="control-label" style="font-size:large">Từ</label>
+                </div>
+                <div class="col-xs-2 col-sm-2">                    
+                    <input type="date" id="tu" min="1970-01-01" max="3000-12-31" class="form-control"/>
+                </div>
+                <div class="col-xs-1 col-sm-1">
+                    <label class="control-label" style="font-size:large">Đến</label>
+                </div>
+                <div class="col-xs-2 col-sm-2">
+                    <input type="date" id="den" min="1970-01-01" max="3000-12-31" class="form-control" />
+                </div>
+                <div class="col-xs-1 col-sm-1">
+                    <input type="button" value="Tìm" class="btn btn-info" onclick="takedata('1');" />
+                </div>
+            </div>
+        </div>  
+        <br />   
+        <table class="table table-bordered">
+            <thead>
+                <tr>                    
+                    <th>Sách</th>
+                    <th>Ngày lấy</th>
+                    <th>Số lượng xuất</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (dl.ChiTietSachDaiLyLays.Count != 0)
+                {
+                    foreach (ChiTietSachDaiLyLay ct in dl.ChiTietSachDaiLyLays)
+                    {
+                        <tr>
+                            <td>@ct.Sach.tenSach</td>
+                            <td>@ct.ngayLay.ToString("dd/MM/yyyy")</td>
+                            <td>@ct.soLuongXuat</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        
+        <a href="/DaiLies"><h3>Quay lại</h3></a>
+    </div>
+</body>
+</html>
+
+

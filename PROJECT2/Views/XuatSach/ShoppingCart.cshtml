@@ -1,0 +1,110 @@
+﻿@using PROJECT2.Models;
+@using EF;
+@{
+    List<CartItem> cart = ViewBag.Cart as List<CartItem>;
+    double total = 0;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#btnUpdate').click(function () {
+                var listProduct = $('.Quantity');
+                var cartList = [];
+
+                $.each(listProduct, function (i, item) {
+                    if (Number($(item).val()) > Number($(item).data('maxsoluong'))) {
+                        //alert("Kiểm tra lại số lượng dòng " + (i+1));
+                        alert("Số lượng trong kho ở sách thứ " + (i + 1) + " chỉ còn " + Number($(item).data('maxsoluong')) + " quyển. Hãy nhập lại.");                        
+                        return;
+                    }
+                });
+               
+                $.each(listProduct, function (i, item) {
+                    cartList.push($(item).val());
+                });
+                jQuery.ajaxSettings.traditional = true
+                $.get('/XuatSach/Update', { cartList: cartList }, function (data) {
+                    window.location.href = "/XuatSach/ShoppingCart";
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+
+    <div class="container">
+        <h2 class="text-center">Thêm phiếu xuất</h2>
+        <br />
+        <div class="table-responsive" id="form">
+            @if (cart != null)
+            {
+                <form action="/XuatSach/Payment" method="get">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Tên sách</th>
+                                <th>Số lượng</th>
+                                <th>Đơn giá nhập<i>&nbsp;(VNĐ)</i></th>
+                                <th>Thành tiền<i>&nbsp;(VNĐ)</i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < cart.Count; i++)
+                            {
+                                var soluong = cart[i].Quantity;
+                                Sach sach = cart[i].productOrder;
+                                double dongiaban = Convert.ToDouble(sach.donGiaBan);
+                                double value = Convert.ToDouble(sach.donGiaBan) * soluong;
+                                total += value;
+                                <tr>
+                                    <td>@sach.tenSach</td>
+                                    <td>
+                                        <input id="qtt" type="number" min="1" max="@sach.soLuong" data-maxsoluong="@sach.soLuong" value="@soluong" class="Quantity" /> &nbsp;
+                                    </td>
+                                    <td align="right">@dongiaban.ToString("#,##0")</td>
+                                    <td align="right">@value.ToString("#,##0")</td>
+                                    <td>
+                                        <a href="/XuatSach/Delete?id=@sach.idSach" class="btn btn-warning">
+                                            <span class="glyphicon glyphicon-trash"></span>Xóa
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="7" class="text-right">
+                                    <strong>Tổng tiền: @total.ToString("#,##0")<i>&nbsp;(VNĐ)</i></strong>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <p class="pull-right">
+                        <a href="/XuatSach" class="btn btn-info">Tiếp tục thêm sách</a>
+                        <input type="button" id="btnUpdate" class="btn btn-primary" value="Cập nhật" />
+                        <a href="/XuatSach/DeleteAll" class="btn btn-danger">Xóa phiếu</a>
+                        <input type="submit" id="btnPayment" class="btn btn-success" value="Lập phiếu nhập" />
+                    </p>
+                </form>
+
+            }
+            else
+            {
+                <span class="alert alert-danger">Chưa có sản phẩm nào trong phiếu</span>
+                <p class="pull-right">
+                    <a href="/XuatSach" class="btn btn-info">Quay lại</a>
+                </p>
+            }
+        </div>
+    </div>
+
+</body>
+</html>

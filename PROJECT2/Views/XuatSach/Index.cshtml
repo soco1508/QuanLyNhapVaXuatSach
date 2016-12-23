@@ -1,0 +1,148 @@
+﻿@using EF;
+@{
+    List<Sach> sach = ViewBag.sach as List<Sach>;
+    List<LinhVuc> linhvuc = ViewBag.linhvuc as List<LinhVuc>;
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    <script>
+        function addCommas(nStr) {
+            nStr += '';
+            x = nStr.split('.');
+            x1 = x[0];
+            x2 = x.length > 1 ? '.' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+            }
+            return x1 + x2;
+        }
+
+        function AddToCart(idSach) {
+            $.ajax({
+                type: 'GET',
+                url: '/XuatSach/AddToCart',
+                contentType: "application/json; charset=utf-8",
+                data: { idsach: idSach },
+                success: function (result) {
+                    $("#Cart_Amount").html(result.ItemAmount);
+                },
+                error: function (r) {
+                    alert(r);
+                },
+                dataType: 'json'
+            });
+        }
+
+        function takedata(j) {
+            var tenlinhvuc = $('#linhvuc').val();
+            var tensach = $('#sach').val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("TakeData","XuatSach")',
+                contentType: "application/json; charset=utf-8",
+                data: { tenlinhvuc: tenlinhvuc, tensach: tensach, page: j },
+                success: function (result) {
+                    $('tbody').children().remove();
+                    $('.btn-group').html('');
+                    for (var i = 0; i < result.data.length; i++) {
+                        var t = addCommas(result.data[i].giaban);
+                        var row = '<tr>';
+                        row = row + '<td>' + result.data[i].tensach + '</td>';
+                        row = row + '<td>' + result.data[i].soluong + '</td>';
+                        row = row + '<td>' + result.data[i].tenlinhvuc + '</td>';
+                        row = row + '<td align = "right">' + t + '</td>';
+                        row = row + '<td align = "right">';
+                        row = row + '<a href="#" onclick="AddToCart('+result.data[i].idsach+')">';
+                        row = row + '<span class="glyphicon glyphicon-plus"></span>Thêm</a>'
+                        row = row + '</td>';
+                        row = row + '<td align = "right"><a href="/XuatSach/Details?id=' + result.data[i].idsach + '"><span class="glyphicon glyphicon-info-sign"></span>Chi tiết</a></td>';
+                        row = row + '</tr>';
+                        $('tbody').append(row);
+                    }
+                    var maxpage = Math.ceil(result.count / 10);
+                    for (var i = 1; i <= maxpage; i++) {
+                        var s = '';
+                        if (i == Number(j)) {
+                            s = '<button class="btn btn-default" onclick="takedata('+i+')">'+i+'</button>';
+                        } else {
+                            s = '<button class="btn btn-default" onclick="takedata('+i+')">'+i+'</button>';
+                        }
+                        $('.btn-group').append(s);
+                    }
+                },
+                error:function(r){
+                    alert(r);
+                },
+                dataType: 'json'
+            });
+        }
+
+        $(document).ready(function () {
+            takedata("1");
+        });
+    </script>
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+    <div class="container">
+        <h2 class="text-center">Công ty phát hành sách 22+</h2>
+        <div class="pull-right">
+            <a href="/XuatSach/ShoppingCart">
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+                <span class="badge" id="Cart_Amount">@ViewBag.soluong</span>
+            </a>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-xs-2">
+                    <select id="linhvuc" class="form-control">
+                        <option value="" label="Chọn lĩnh vực" hidden="hidden"></option>
+                        <option value="">Tất cả</option>
+                        @for (int i = 0; i < linhvuc.Count; i++)
+                        {
+                            <option value="@linhvuc[i].linhVuc1">@linhvuc[i].linhVuc1</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <input type="text" id="sach" class="form-control" placeholder="Nhập tên sách cần tìm" />
+                </div>
+                <div class="col-xs-1">
+                    <input type="button" class="btn btn-info" value="Tìm" onclick="takedata('1');" />
+                </div>
+            </div>
+        </div>
+        <br /> 
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Tên sách</th>
+                    <th>Số lượng</th>
+                    <th>Lĩnh vực</th>
+                    <th style="width:11%">Giá bán<i>&nbsp;(VNĐ)</i></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tablesach"></tbody>
+        </table>
+        <div class="row">
+            <div class="text-center">
+                <div class="btn-group">
+                </div>
+            </div>
+        </div>
+        <br /><br /><br /><br /><br />
+    </div>
+</body>
+</html>

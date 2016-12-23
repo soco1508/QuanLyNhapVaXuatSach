@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MuaBanSachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChiTietSach">
+    <Key>
+      <PropertyRef Name="idCTSach" />
+    </Key>
+    <Property Name="idCTSach" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenTacGia" Type="nvarchar" MaxLength="50" />
+    <Property Name="idNXB" Type="int" Nullable="false" />
+    <Property Name="ngayXuatBan" Type="datetime" />
+    <Property Name="soTrang" Type="int" />
+    <Property Name="khoGiay" Type="char" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="ChiTietSachDaiLyLay">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idDL" Type="int" Nullable="false" />
+    <Property Name="idSach" Type="int" Nullable="false" />
+    <Property Name="ngayLay" Type="datetime" Nullable="false" />
+    <Property Name="soLuongXuat" Type="int" />
+  </EntityType>
+  <EntityType Name="ChiTietSachNXBNhap">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idNXB" Type="int" Nullable="false" />
+    <Property Name="idSach" Type="int" Nullable="false" />
+    <Property Name="ngayNhap" Type="datetime" />
+    <Property Name="soLuongNhap" Type="int" />
+  </EntityType>
+  <EntityType Name="CTHoaDonBan">
+    <Key>
+      <PropertyRef Name="idCTHDB" />
+      <PropertyRef Name="idHDB" />
+    </Key>
+    <Property Name="idCTHDB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idHDB" Type="int" Nullable="false" />
+    <Property Name="idSach" Type="int" Nullable="false" />
+    <Property Name="idLV" Type="int" Nullable="false" />
+    <Property Name="soLuong" Type="int" />
+  </EntityType>
+  <EntityType Name="CTHoaDonNhap">
+    <Key>
+      <PropertyRef Name="idCTHDN" />
+      <PropertyRef Name="idHDN" />
+    </Key>
+    <Property Name="idCTHDN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idHDN" Type="int" Nullable="false" />
+    <Property Name="idSach" Type="int" Nullable="false" />
+    <Property Name="idLV" Type="int" Nullable="false" />
+    <Property Name="soLuong" Type="int" />
+  </EntityType>
+  <EntityType Name="DaiLy">
+    <Key>
+      <PropertyRef Name="idDL" />
+    </Key>
+    <Property Name="idDL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenDaiLy" Type="nvarchar" MaxLength="30" />
+    <Property Name="diaChi" Type="nvarchar" MaxLength="50" />
+    <Property Name="sDT" Type="varchar" MaxLength="12" />
+    <Property Name="tienDLNo" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="HoaDonBan">
+    <Key>
+      <PropertyRef Name="idHDB" />
+    </Key>
+    <Property Name="idHDB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idDL" Type="int" Nullable="false" />
+    <Property Name="diaChi" Type="nvarchar" MaxLength="50" />
+    <Property Name="sDT" Type="varchar" MaxLength="12" />
+    <Property Name="ngayBan" Type="datetime" />
+    <Property Name="nguoiNhanSach" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="tongTien" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="HoaDonNhap">
+    <Key>
+      <PropertyRef Name="idHDN" />
+    </Key>
+    <Property Name="idHDN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idNXB" Type="int" Nullable="false" />
+    <Property Name="sDT" Type="varchar" MaxLength="12" />
+    <Property Name="ngayNhap" Type="datetime" />
+    <Property Name="nguoiGiaoSach" Type="nvarchar" MaxLength="30" />
+    <Property Name="tongTien" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="LinhVuc">
+    <Key>
+      <PropertyRef Name="idLV" />
+    </Key>
+    <Property Name="idLV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="linhVuc" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="NhaXuatBan">
+    <Key>
+      <PropertyRef Name="idNXB" />
+    </Key>
+    <Property Name="idNXB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenNXB" Type="nvarchar" MaxLength="30" />
+    <Property Name="diaChi" Type="nvarchar" MaxLength="50" />
+    <Property Name="sDT" Type="varchar" MaxLength="12" />
+    <Property Name="tienNoNXB" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Sach">
+    <Key>
+      <PropertyRef Name="idSach" />
+    </Key>
+    <Property Name="idSach" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idLV" Type="int" Nullable="false" />
+    <Property Name="tenSach" Type="nvarchar" MaxLength="30" />
+    <Property Name="soLuong" Type="int" />
+    <Property Name="donGiaBan" Type="varchar" MaxLength="20" />
+    <Property Name="donGiaNhap" Type="varchar" MaxLength="20" />
+    <Property Name="idCTSach" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ChiTietSa__idNXB__145C0A3F">
+    <End Role="NhaXuatBan" Type="Self.NhaXuatBan" Multiplicity="1" />
+    <End Role="ChiTietSach" Type="Self.ChiTietSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaXuatBan">
+        <PropertyRef Name="idNXB" />
+      </Principal>
+      <Dependent Role="ChiTietSach">
+        <PropertyRef Name="idNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietSa__idNXB__1B0907CE">
+    <End Role="NhaXuatBan" Type="Self.NhaXuatBan" Multiplicity="1" />
+    <End Role="ChiTietSachNXBNhap" Type="Self.ChiTietSachNXBNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaXuatBan">
+        <PropertyRef Name="idNXB" />
+      </Principal>
+      <Dependent Role="ChiTietSachNXBNhap">
+        <PropertyRef Name="idNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietSa__idSac__1BFD2C07">
+    <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+    <End Role="ChiTietSachNXBNhap" Type="Self.ChiTietSachNXBNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="idSach" />
+      </Principal>
+      <Dependent Role="ChiTietSachNXBNhap">
+        <PropertyRef Name="idSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietSa__idSac__21B6055D">
+    <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+    <End Role="ChiTietSachDaiLyLay" Type="Self.ChiTietSachDaiLyLay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="idSach" />
+      </Principal>
+      <Dependent Role="ChiTietSachDaiLyLay">
+        <PropertyRef Name="idSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietSac__idDL__20C1E124">
+    <End Role="DaiLy" Type="Self.DaiLy" Multiplicity="1" />
+    <End Role="ChiTietSachDaiLyLay" Type="Self.ChiTietSachDaiLyLay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DaiLy">
+        <PropertyRef Name="idDL" />
+      </Principal>
+      <Dependent Role="ChiTietSachDaiLyLay">
+        <PropertyRef Name="idDL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sach__idCTSach__182C9B23">
+    <End Role="ChiTietSach" Type="Self.ChiTietSach" Multiplicity="1" />
+    <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChiTietSach">
+        <PropertyRef Name="idCTSach" />
+      </Principal>
+      <Dependent Role="Sach">
+        <PropertyRef Name="idCTSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sach__idLV__173876EA">
+    <End Role="LinhVuc" Type="Self.LinhVuc" Multiplicity="1" />
+    <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LinhVuc">
+        <PropertyRef Name="idLV" />
+      </Principal>
+      <Dependent Role="Sach">
+        <PropertyRef Name="idLV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTHoaDonBan_HoaDonBan">
+    <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="1" />
+    <End Role="CTHoaDonBan" Type="Self.CTHoaDonBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDonBan">
+        <PropertyRef Name="idHDB" />
+      </Principal>
+      <Dependent Role="CTHoaDonBan">
+        <PropertyRef Name="idHDB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTHoaDonBan_LinhVuc">
+    <End Role="LinhVuc" Type="Self.LinhVuc" Multiplicity="1" />
+    <End Role="CTHoaDonBan" Type="Self.CTHoaDonBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LinhVuc">
+        <PropertyRef Name="idLV" />
+      </Principal>
+      <Dependent Role="CTHoaDonBan">
+        <PropertyRef Name="idLV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTHoaDonBan_Sach">
+    <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+    <End Role="CTHoaDonBan" Type="Self.CTHoaDonBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="idSach" />
+      </Principal>
+      <Dependent Role="CTHoaDonBan">
+        <PropertyRef Name="idSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTHoaDonNhap_HoaDonNhap">
+    <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="1" />
+    <End Role="CTHoaDonNhap" Type="Self.CTHoaDonNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDonNhap">
+        <PropertyRef Name="idHDN" />
+      </Principal>
+      <Dependent Role="CTHoaDonNhap">
+        <PropertyRef Name="idHDN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTHoaDonNhap_LinhVuc">
+    <End Role="LinhVuc" Type="Self.LinhVuc" Multiplicity="1" />
+    <End Role="CTHoaDonNhap" Type="Self.CTHoaDonNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LinhVuc">
+        <PropertyRef Name="idLV" />
+      </Principal>
+      <Dependent Role="CTHoaDonNhap">
+        <PropertyRef Name="idLV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTHoaDonNhap_Sach">
+    <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+    <End Role="CTHoaDonNhap" Type="Self.CTHoaDonNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="idSach" />
+      </Principal>
+      <Dependent Role="CTHoaDonNhap">
+        <PropertyRef Name="idSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HoaDonBan_DaiLy">
+    <End Role="DaiLy" Type="Self.DaiLy" Multiplicity="1" />
+    <End Role="HoaDonBan" Type="Self.HoaDonBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DaiLy">
+        <PropertyRef Name="idDL" />
+      </Principal>
+      <Dependent Role="HoaDonBan">
+        <PropertyRef Name="idDL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HoaDonNhap_NhaXuatBan">
+    <End Role="NhaXuatBan" Type="Self.NhaXuatBan" Multiplicity="1" />
+    <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaXuatBan">
+        <PropertyRef Name="idNXB" />
+      </Principal>
+      <Dependent Role="HoaDonNhap">
+        <PropertyRef Name="idNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MuaBanSachModelStoreContainer">
+    <EntitySet Name="ChiTietSach" EntityType="Self.ChiTietSach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiTietSachDaiLyLay" EntityType="Self.ChiTietSachDaiLyLay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiTietSachNXBNhap" EntityType="Self.ChiTietSachNXBNhap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTHoaDonBan" EntityType="Self.CTHoaDonBan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTHoaDonNhap" EntityType="Self.CTHoaDonNhap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DaiLy" EntityType="Self.DaiLy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HoaDonBan" EntityType="Self.HoaDonBan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HoaDonNhap" EntityType="Self.HoaDonNhap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LinhVuc" EntityType="Self.LinhVuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhaXuatBan" EntityType="Self.NhaXuatBan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sach" EntityType="Self.Sach" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChiTietSa__idNXB__145C0A3F" Association="Self.FK__ChiTietSa__idNXB__145C0A3F">
+      <End Role="NhaXuatBan" EntitySet="NhaXuatBan" />
+      <End Role="ChiTietSach" EntitySet="ChiTietSach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietSa__idNXB__1B0907CE" Association="Self.FK__ChiTietSa__idNXB__1B0907CE">
+      <End Role="NhaXuatBan" EntitySet="NhaXuatBan" />
+      <End Role="ChiTietSachNXBNhap" EntitySet="ChiTietSachNXBNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietSa__idSac__1BFD2C07" Association="Self.FK__ChiTietSa__idSac__1BFD2C07">
+      <End Role="Sach" EntitySet="Sach" />
+      <End Role="ChiTietSachNXBNhap" EntitySet="ChiTietSachNXBNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietSa__idSac__21B6055D" Association="Self.FK__ChiTietSa__idSac__21B6055D">
+      <End Role="Sach" EntitySet="Sach" />
+      <End Role="ChiTietSachDaiLyLay" EntitySet="ChiTietSachDaiLyLay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietSac__idDL__20C1E124" Association="Self.FK__ChiTietSac__idDL__20C1E124">
+      <End Role="DaiLy" EntitySet="DaiLy" />
+      <End Role="ChiTietSachDaiLyLay" EntitySet="ChiTietSachDaiLyLay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sach__idCTSach__182C9B23" Association="Self.FK__Sach__idCTSach__182C9B23">
+      <End Role="ChiTietSach" EntitySet="ChiTietSach" />
+      <End Role="Sach" EntitySet="Sach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sach__idLV__173876EA" Association="Self.FK__Sach__idLV__173876EA">
+      <End Role="LinhVuc" EntitySet="LinhVuc" />
+      <End Role="Sach" EntitySet="Sach" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTHoaDonBan_HoaDonBan" Association="Self.FK_CTHoaDonBan_HoaDonBan">
+      <End Role="HoaDonBan" EntitySet="HoaDonBan" />
+      <End Role="CTHoaDonBan" EntitySet="CTHoaDonBan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTHoaDonBan_LinhVuc" Association="Self.FK_CTHoaDonBan_LinhVuc">
+      <End Role="LinhVuc" EntitySet="LinhVuc" />
+      <End Role="CTHoaDonBan" EntitySet="CTHoaDonBan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTHoaDonBan_Sach" Association="Self.FK_CTHoaDonBan_Sach">
+      <End Role="Sach" EntitySet="Sach" />
+      <End Role="CTHoaDonBan" EntitySet="CTHoaDonBan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTHoaDonNhap_HoaDonNhap" Association="Self.FK_CTHoaDonNhap_HoaDonNhap">
+      <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
+      <End Role="CTHoaDonNhap" EntitySet="CTHoaDonNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTHoaDonNhap_LinhVuc" Association="Self.FK_CTHoaDonNhap_LinhVuc">
+      <End Role="LinhVuc" EntitySet="LinhVuc" />
+      <End Role="CTHoaDonNhap" EntitySet="CTHoaDonNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTHoaDonNhap_Sach" Association="Self.FK_CTHoaDonNhap_Sach">
+      <End Role="Sach" EntitySet="Sach" />
+      <End Role="CTHoaDonNhap" EntitySet="CTHoaDonNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HoaDonBan_DaiLy" Association="Self.FK_HoaDonBan_DaiLy">
+      <End Role="DaiLy" EntitySet="DaiLy" />
+      <End Role="HoaDonBan" EntitySet="HoaDonBan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HoaDonNhap_NhaXuatBan" Association="Self.FK_HoaDonNhap_NhaXuatBan">
+      <End Role="NhaXuatBan" EntitySet="NhaXuatBan" />
+      <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

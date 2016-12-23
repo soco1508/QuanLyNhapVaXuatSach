@@ -1,0 +1,46 @@
+﻿@using EF;
+@{
+    Layout = null;
+    NhaXuatBan nxb = ViewBag.nxb as NhaXuatBan;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+    <div class="container">
+
+        <h2>Cập nhật nhà xuất bản</h2>
+        <br />
+        <form class="form-horizontal" method="post" action="/NhaXuatBans/Edit2">            
+            <input type="hidden" class="form-control" name="id" value="@nxb.idNXB" />
+            <div class="form-group" style="width:20%">
+                <label>Tên nhà xuất bản</label>
+                <input type="text" class="form-control" name="ten" value="@nxb.tenNXB" />
+            </div>
+            <div class="form-group" style="width:24%">
+                <label>Địa chỉ</label>
+                <input type="text" class="form-control" name="diachi" value="@nxb.diaChi" />
+            </div>
+            <div class="form-group" style="width:10%">
+                <label>Số điện thoại</label>
+                <input type="text" class="form-control" name="sdt" value="@nxb.sDT" />
+            </div>
+
+            <div class="form-group" style="width:6%">
+                <input type="submit" class="btn btn-default" value="Cập Nhật" />
+            </div>
+        </form>
+
+        <a href="/NhaXuatBans/Index"><h3>Quay lại</h3></a>
+    </div>
+</body>
+</html>

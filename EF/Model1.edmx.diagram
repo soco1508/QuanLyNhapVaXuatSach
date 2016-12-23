@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a93d7c4134c24313abb17ebfa73d17fc" Name="Diagram1">
+        <EntityTypeShape EntityType="MuaBanSachModel.ChiTietSach" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuaBanSachModel.ChiTietSachDaiLyLay" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuaBanSachModel.ChiTietSachNXBNhap" Width="1.5" PointX="7.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuaBanSachModel.CTHoaDonBan" Width="1.5" PointX="10.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuaBanSachModel.CTHoaDonNhap" Width="1.5" PointX="10.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuaBanSachModel.DaiLy" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuaBanSachModel.HoaDonBan" Width="1.5" PointX="8.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuaBanSachModel.HoaDonNhap" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuaBanSachModel.LinhVuc" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuaBanSachModel.NhaXuatBan" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuaBanSachModel.Sach" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="MuaBanSachModel.FK__ChiTietSa__idNXB__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK__Sach__idCTSach__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK__ChiTietSa__idSac__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK__ChiTietSac__idDL__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK__ChiTietSa__idNXB__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK__ChiTietSa__idSac__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK_CTHoaDonBan_HoaDonBan" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK_CTHoaDonBan_LinhVuc" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK_CTHoaDonBan_Sach" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK_CTHoaDonNhap_HoaDonNhap" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK_CTHoaDonNhap_LinhVuc" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK_CTHoaDonNhap_Sach" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK_HoaDonBan_DaiLy" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK_HoaDonNhap_NhaXuatBan" ManuallyRouted="false" />
+        <AssociationConnector Association="MuaBanSachModel.FK__Sach__idLV__173876EA" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MuaBanSachModel.LuuTienNoNXB" Width="1.5" PointX="10.5" PointY="2.5" />
+        <AssociationConnector Association="MuaBanSachModel.FK__LuuTienNoN__iddl__38996AB5" />
+        <AssociationConnector Association="MuaBanSachModel.FK__LuuTienNo__idnxb__398D8EEE" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

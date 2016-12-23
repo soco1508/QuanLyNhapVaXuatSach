@@ -1,0 +1,51 @@
+﻿@using EF;
+@{
+    Layout = null;
+    List<HoaDonNhap> list = ViewBag.list as List<HoaDonNhap>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+
+   
+    <div class="container">
+        <h2 class="text-center">Danh sách phiếu nhập</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nhà xuất bản</th>
+                    <th>Số điện thoại</th>
+                    <th>Ngày nhập</th>
+                    <th>Người giao sách</th>
+                    <th style="width:11%">Tổng tiền<i>&nbsp;(VNĐ)</i></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < list.Count; i++)
+            {
+                double a = Convert.ToDouble(list[i].tongTien);
+                DateTime date = Convert.ToDateTime(list[i].ngayNhap);
+                    <tr>
+                        <td>@list[i].NhaXuatBan.tenNXB</td>
+                        <td>@list[i].sDT</td>
+                        <td>@date.ToString("dd/MM/yyyy")</td>
+                        <td>@list[i].nguoiGiaoSach</td>
+                        <td align="right">@a.ToString("#,##0")</td>
+                        <td align="right"><a href="/HoaDonNhaps/Details?id=@list[i].idHDN">Chi tiết phiếu nhập</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

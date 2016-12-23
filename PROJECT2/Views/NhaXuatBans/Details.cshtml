@@ -1,0 +1,67 @@
+﻿@using EF;
+@{
+    NhaXuatBan nxb = ViewBag.NXB as NhaXuatBan;
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+    <div class="container"> 
+        <h2 class="text-center">Chi tiết sách nhà xuất bản nhập</h2>
+        <h3 class="text-center">Nhà xuất bản:&nbsp;@nxb.tenNXB</h3>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-xs-1 col-sm-1">
+                    <label class="control-label" style="font-size:large">Từ</label>
+                </div>
+                <div class="col-xs-2 col-sm-2">
+                    <input type="date" id="daily" min="1970-01-01" max="3000-12-31" class="form-control" placeholder="Nhập tên đại lý cần tìm" />
+                </div>
+                <div class="col-xs-1 col-sm-1">
+                    <label class="control-label" style="font-size:large">Đến</label>
+                </div>
+                <div class="col-xs-2 col-sm-2">
+                    <input type="date" id="daily" min="1970-01-01" max="3000-12-31" class="form-control" placeholder="Nhập tên đại lý cần tìm" />
+                </div>
+                <div class="col-xs-1 col-sm-1">
+                    <input type="button" value="Tìm" class="btn btn-info" />
+                </div>
+            </div>
+        </div>
+        <br />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sách</th>
+                    <th>Ngày nhập</th>
+                    <th>Số lượng nhập</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (nxb.ChiTietSachNXBNhaps.Count != 0)
+                {
+                    foreach (ChiTietSachNXBNhap ct in nxb.ChiTietSachNXBNhaps)
+                    {
+                        <tr>
+                            <td>@ct.Sach.tenSach</td>
+                            <td>@ct.ngayNhap.ToString("dd/MM/yyyy")</td>
+                            <td>@ct.soLuongNhap</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <a href="/NhaXuatBans"><h3>Quay lại</h3></a>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,73 @@
+﻿@using EF;
+@{
+    Sach sach = ViewBag.sach as Sach;
+    ViewBag.Title = "Trang chủ";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+
+    <div class="container">
+        <h2>Details</h2>
+        <table>
+            <tr>
+                <td>Tên sách:</td>
+                <td>&nbsp;@sach.tenSach</td>
+            </tr>
+            <tr>
+                <td>Số lượng:</td>
+                <td>&nbsp;@sach.soLuong</td>
+            </tr>
+            <tr>
+                <td>Đơn giá bán:</td>
+                <td>&nbsp;@{
+                    double a = double.Parse(sach.donGiaBan);
+                }@a.ToString("#,##0")<i>&nbsp;(VNĐ)</i>
+                </td>
+            </tr>            
+            <tr>
+                <td>Tên tác giả:</td>
+                <td>&nbsp;@sach.ChiTietSach.tenTacGia</td>
+            </tr>
+            <tr>
+                <td>Lĩnh vực:</td>
+                <td>&nbsp;@sach.LinhVuc.linhVuc1</td>
+            </tr>
+            <tr>
+                <td>Ngày xuất bản:</td>
+                <td>&nbsp;@{
+                    DateTime b = DateTime.Parse(sach.ChiTietSach.ngayXuatBan.Value.ToString());
+                }@b.ToString("dd/MM/yyyy")</td>
+            </tr>
+            <tr>
+                <td>Khổ giấy:</td>
+                <td>&nbsp;@sach.ChiTietSach.khoGiay</td>
+            </tr>
+            <tr>
+                <td>Số trang:</td>
+                <td>&nbsp;@sach.ChiTietSach.soTrang</td>
+            </tr>
+            <tr>
+                <td>Tên nhà xuất bản:</td>
+                <td>&nbsp;@sach.ChiTietSach.NhaXuatBan.tenNXB</td>
+            </tr>
+        </table>
+        <a href="/XuatSach"><h3>Quay lại</h3></a>
+    </div>
+
+</body>
+</html>
+
+
+
+

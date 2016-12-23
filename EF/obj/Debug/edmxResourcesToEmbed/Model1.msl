@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MuaBanSachModelStoreContainer" CdmEntityContainer="MuaBanSachEntities1">
+    <EntitySetMapping Name="ChiTietSaches">
+      <EntityTypeMapping TypeName="MuaBanSachModel.ChiTietSach">
+        <MappingFragment StoreEntitySet="ChiTietSach">
+          <ScalarProperty Name="idCTSach" ColumnName="idCTSach" />
+          <ScalarProperty Name="tenTacGia" ColumnName="tenTacGia" />
+          <ScalarProperty Name="idNXB" ColumnName="idNXB" />
+          <ScalarProperty Name="ngayXuatBan" ColumnName="ngayXuatBan" />
+          <ScalarProperty Name="soTrang" ColumnName="soTrang" />
+          <ScalarProperty Name="khoGiay" ColumnName="khoGiay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietSachDaiLyLays">
+      <EntityTypeMapping TypeName="MuaBanSachModel.ChiTietSachDaiLyLay">
+        <MappingFragment StoreEntitySet="ChiTietSachDaiLyLay">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idDL" ColumnName="idDL" />
+          <ScalarProperty Name="idSach" ColumnName="idSach" />
+          <ScalarProperty Name="ngayLay" ColumnName="ngayLay" />
+          <ScalarProperty Name="soLuongXuat" ColumnName="soLuongXuat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietSachNXBNhaps">
+      <EntityTypeMapping TypeName="MuaBanSachModel.ChiTietSachNXBNhap">
+        <MappingFragment StoreEntitySet="ChiTietSachNXBNhap">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idNXB" ColumnName="idNXB" />
+          <ScalarProperty Name="idSach" ColumnName="idSach" />
+          <ScalarProperty Name="ngayNhap" ColumnName="ngayNhap" />
+          <ScalarProperty Name="soLuongNhap" ColumnName="soLuongNhap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTHoaDonBans">
+      <EntityTypeMapping TypeName="MuaBanSachModel.CTHoaDonBan">
+        <MappingFragment StoreEntitySet="CTHoaDonBan">
+          <ScalarProperty Name="idCTHDB" ColumnName="idCTHDB" />
+          <ScalarProperty Name="idHDB" ColumnName="idHDB" />
+          <ScalarProperty Name="idSach" ColumnName="idSach" />
+          <ScalarProperty Name="idLV" ColumnName="idLV" />
+          <ScalarProperty Name="soLuong" ColumnName="soLuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTHoaDonNhaps">
+      <EntityTypeMapping TypeName="MuaBanSachModel.CTHoaDonNhap">
+        <MappingFragment StoreEntitySet="CTHoaDonNhap">
+          <ScalarProperty Name="idCTHDN" ColumnName="idCTHDN" />
+          <ScalarProperty Name="idHDN" ColumnName="idHDN" />
+          <ScalarProperty Name="idSach" ColumnName="idSach" />
+          <ScalarProperty Name="idLV" ColumnName="idLV" />
+          <ScalarProperty Name="soLuong" ColumnName="soLuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DaiLies">
+      <EntityTypeMapping TypeName="MuaBanSachModel.DaiLy">
+        <MappingFragment StoreEntitySet="DaiLy">
+          <ScalarProperty Name="idDL" ColumnName="idDL" />
+          <ScalarProperty Name="tenDaiLy" ColumnName="tenDaiLy" />
+          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+          <ScalarProperty Name="sDT" ColumnName="sDT" />
+          <ScalarProperty Name="tienDLNo" ColumnName="tienDLNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDonBans">
+      <EntityTypeMapping TypeName="MuaBanSachModel.HoaDonBan">
+        <MappingFragment StoreEntitySet="HoaDonBan">
+          <ScalarProperty Name="idHDB" ColumnName="idHDB" />
+          <ScalarProperty Name="idDL" ColumnName="idDL" />
+          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+          <ScalarProperty Name="sDT" ColumnName="sDT" />
+          <ScalarProperty Name="ngayBan" ColumnName="ngayBan" />
+          <ScalarProperty Name="nguoiNhanSach" ColumnName="nguoiNhanSach" />
+          <ScalarProperty Name="tongTien" ColumnName="tongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDonNhaps">
+      <EntityTypeMapping TypeName="MuaBanSachModel.HoaDonNhap">
+        <MappingFragment StoreEntitySet="HoaDonNhap">
+          <ScalarProperty Name="idHDN" ColumnName="idHDN" />
+          <ScalarProperty Name="idNXB" ColumnName="idNXB" />
+          <ScalarProperty Name="sDT" ColumnName="sDT" />
+          <ScalarProperty Name="ngayNhap" ColumnName="ngayNhap" />
+          <ScalarProperty Name="nguoiGiaoSach" ColumnName="nguoiGiaoSach" />
+          <ScalarProperty Name="tongTien" ColumnName="tongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LinhVucs">
+      <EntityTypeMapping TypeName="MuaBanSachModel.LinhVuc">
+        <MappingFragment StoreEntitySet="LinhVuc">
+          <ScalarProperty Name="idLV" ColumnName="idLV" />
+          <ScalarProperty Name="linhVuc1" ColumnName="linhVuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhaXuatBans">
+      <EntityTypeMapping TypeName="MuaBanSachModel.NhaXuatBan">
+        <MappingFragment StoreEntitySet="NhaXuatBan">
+          <ScalarProperty Name="idNXB" ColumnName="idNXB" />
+          <ScalarProperty Name="tenNXB" ColumnName="tenNXB" />
+          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+          <ScalarProperty Name="sDT" ColumnName="sDT" />
+          <ScalarProperty Name="tienNoNXB" ColumnName="tienNoNXB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Saches">
+      <EntityTypeMapping TypeName="MuaBanSachModel.Sach">
+        <MappingFragment StoreEntitySet="Sach">
+          <ScalarProperty Name="idSach" ColumnName="idSach" />
+          <ScalarProperty Name="idLV" ColumnName="idLV" />
+          <ScalarProperty Name="tenSach" ColumnName="tenSach" />
+          <ScalarProperty Name="soLuong" ColumnName="soLuong" />
+          <ScalarProperty Name="donGiaBan" ColumnName="donGiaBan" />
+          <ScalarProperty Name="donGiaNhap" ColumnName="donGiaNhap" />
+          <ScalarProperty Name="idCTSach" ColumnName="idCTSach" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LuuTienNoNXBs">
+      <EntityTypeMapping TypeName="MuaBanSachModel.LuuTienNoNXB">
+        <MappingFragment StoreEntitySet="LuuTienNoNXB">
+          <ScalarProperty Name="tienNo" ColumnName="tienNo" />
+          <ScalarProperty Name="ngay" ColumnName="ngay" />
+          <ScalarProperty Name="idnxb" ColumnName="idnxb" />
+          <ScalarProperty Name="iddl" ColumnName="iddl" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD271C07-CD8A-4F63-AF09-AE54C549A8F2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CTPHS</RootNamespace>
+    <AssemblyName>CTPHS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.10\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CTPHS\Properties\Resources.cs" />
+    <Compile Include="CTSACH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CTSACH.Designer.cs">
+      <DependentUpon>CTSACH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FIRSTFORM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FIRSTFORM.Designer.cs">
+      <DependentUpon>FIRSTFORM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SACH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SACH.Designer.cs">
+      <DependentUpon>SACH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="THEMSACH1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="THEMSACH1.Designer.cs">
+      <DependentUpon>THEMSACH1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="THONGKE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="THONGKE.Designer.cs">
+      <DependentUpon>THONGKE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="THONGKETIENNO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="THONGKETIENNO.Designer.cs">
+      <DependentUpon>THONGKETIENNO.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CTSACH.resx">
+      <DependentUpon>CTSACH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FIRSTFORM.resx">
+      <DependentUpon>FIRSTFORM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SACH.resx">
+      <DependentUpon>SACH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="THEMSACH1.resx">
+      <DependentUpon>THEMSACH1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="THONGKE.resx">
+      <DependentUpon>THONGKE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="THONGKETIENNO.resx">
+      <DependentUpon>THONGKETIENNO.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{02b875f3-f530-45e9-b783-77a73c20d5e6}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EF\EF.csproj">
+      <Project>{50bcf90e-4bfb-4383-a3c3-eb2417f25596}</Project>
+      <Name>EF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\1.png" />
+    <Content Include="Resources\2.png" />
+    <Content Include="Resources\3.png" />
+    <Content Include="Resources\4a47a0db6e60853dedfcfdf08a5ca2491384508583.png" />
+    <Content Include="Resources\Actions-dialog-cancel-icon.png" />
+    <None Include="Resources\Actions-dialog-cancel-icon1.png" />
+    <Content Include="Resources\bao-cao-thong-ke.png" />
+    <Content Include="Resources\bao-cao-thong-ke1.jpg" />
+    <Content Include="Resources\Calculator-icon.png" />
+    <Content Include="Resources\close-icon.png" />
+    <None Include="Resources\close-icon1.png" />
+    <Content Include="Resources\hard-drive-disk-saving-data-add-arrow-icon.png" />
+    <None Include="Resources\hard-drive-disk-saving-data-add-arrow-icon1.png" />
+    <Content Include="Resources\images.jpg" />
+    <Content Include="Resources\images1.jpg" />
+    <None Include="Resources\money-bag-52258.png" />
+    <Content Include="Resources\Plus-Desirable-Icon-Sign-Free-Image-Button-Free-Il-1628.jpg" />
+    <None Include="Resources\Plus-Desirable-Icon-Sign-Free-Image-Button-Free-Il-16281.jpg" />
+    <Content Include="Resources\Refresh.png" />
+    <None Include="Resources\Refresh1.png" />
+    <Content Include="Resources\search-icon-6351.png" />
+    <None Include="Resources\search-icon-63511.png" />
+    <Content Include="Resources\tải xuống.jpg" />
+    <Content Include="Resources\tải xuống.png" />
+    <None Include="Resources\tải xuống1.jpg" />
+    <None Include="Resources\tải xuống1.png" />
+    <Content Include="Resources\up-arrow-icon_original_crop_north.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    <style>
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: unset;
+            margin: unset;
+        }
+    </style>
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+
+    <div class="container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="img">
+                <div class="item active">
+                    <img src="/Images/28f8da0dfa544006e2d98b76f4f7220d.jpg" alt="Black Keyboard">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2><strong class="text-danger">Nhập sách</strong></h2>
+                <p><a class="btn btn-info" href="/NhapSach/Index">Đi đến &raquo;</a></p>
+            </div>
+            <div class="col-md-6">
+                <h2><strong class="text-danger">Xuất sách</strong></h2>
+                <p><a class="btn btn-info" href="/XuatSach/Index">Đi đến &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>
+
+
+
+

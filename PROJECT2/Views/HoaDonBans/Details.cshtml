@@ -1,0 +1,181 @@
+﻿@using EF;
+@{
+    HoaDonBan hoadon = ViewBag.hoadon as HoaDonBan;
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <style>
+        div.border {
+            position: relative;
+            border-style: solid;
+            border-width: medium;
+            border-color: #1a8cff;
+            width: 1000px;
+            height: auto;
+            background-color: #e6fff2;
+        }
+
+        div.a {
+            position: relative;
+            top: 20px;
+            left: 25px;
+        }
+
+        div.b {
+            position: relative;
+            top: 25px;
+            left: 25px;
+        }
+
+        div.c {
+            position: relative;
+            top: 30px;
+            left: 25px;
+        }
+
+        div.d {
+            position: relative;
+            top: -47px;
+            left: 360px;
+        }
+
+        div.e {
+            position: relative;
+            top: -41px;
+            left: 360px;
+        }
+
+        div.f {
+            position: relative;
+            top: -35px;
+            left: 360px;
+        }
+
+        div.g {
+            position: relative;
+            top: -113px;
+            left: 660px;
+        }
+
+        div.h {
+            position: relative;
+            top: -107px;
+            left: 660px;
+        }
+
+        div.i {
+            position: relative;
+            top: -101px;
+            left: 660px;
+        }
+
+        div.sectiongroup {
+            position: relative;
+            top: -80px;
+            left: 20px;
+            width: 95%;
+        }
+
+        div.date {
+            position: relative;
+            bottom: 100px;
+            left: 670px;
+        }
+    </style>
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+
+    <div class="container">
+        <div class="border">
+            <h2 class="text-center" style="color:#1a8cff;"><strong>Chi tiết phiếu xuất</strong></h2>
+            <div class="content">
+                <div class="a" style="color:#1a8cff;font-size:16px;">
+                    Công ty phát hành sách: <b style="color:#000000">22+</b>
+                </div>
+                <div class="b" style="color:#1a8cff;font-size:16px;">
+                    Địa chỉ:<b style="color:#000000">&nbsp;273 An Dương Vương</b>
+                </div>
+                <div class="c" style="color:#1a8cff;font-size:16px;">
+                    Điện thoại:<b style="color:#000000">&nbsp;19001000</b>
+                </div>
+                <div class="d" style="color:#1a8cff;font-size:16px;">
+                    Tên đại lý:<b style="color:#000000">&nbsp;@hoadon.DaiLy.tenDaiLy</b>
+                </div>
+                <div class="e" style="color:#1a8cff;font-size:16px;">
+                    Địa chỉ:<b style="color:#000000">&nbsp;@hoadon.diaChi</b>
+                </div>
+                <div class="f" style="color:#1a8cff;font-size:16px;">
+                    Điện thoại:<b style="color:#000000">&nbsp;@hoadon.sDT</b>
+                </div>
+                <div class="g" style="color:#1a8cff;font-size:16px;">
+                    Người nhận sách:<b style="color:#000000">&nbsp;@hoadon.nguoiNhanSach</b>
+                </div>
+                <div class="h" style="color:#1a8cff;font-size:16px;">
+                    Mã ĐL:<b style="color:#000000">&nbsp;ĐL0000&ndash;@hoadon.idDL</b>
+                </div>
+                <div class="i" style="color:#1a8cff;font-size:16px;">
+                    Mã HĐ:<b style="color:#000000">&nbsp;HĐ0000&ndash;@hoadon.idHDB</b>
+                </div>
+                <div class="sectiongroup">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width:35%">Tên sách</th>
+                                <th>Lĩnh vực</th>
+                                <th style="width:10%">Số lượng</th>
+                                <th style="width:15%">Đơn giá<i>&nbsp;(VNĐ)</i></th>
+                                <th style="width:15%">Thành tiền<i>&nbsp;(VNĐ)</i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (hoadon.CTHoaDonBans.Count != 0)
+                            {
+                                foreach (CTHoaDonBan chitiet in hoadon.CTHoaDonBans)
+                                {
+                                    double a = Convert.ToDouble(chitiet.Sach.donGiaBan);
+                                    int sl = Convert.ToInt32(chitiet.soLuong);
+                                    double tt = sl * a;
+                                    <tr>
+                                        <td>@chitiet.Sach.tenSach</td>
+                                        <td>@chitiet.Sach.LinhVuc.linhVuc1</td>
+                                        <td>@chitiet.soLuong</td>
+                                        <td align="right">@a.ToString("#,##0")</td>
+                                        <td align="right">@tt.ToString("#,##0")</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            @{
+                                double total = Convert.ToDouble(hoadon.tongTien);
+                            }
+                            <tr>
+                                <td colspan="7" class="text-right">
+                                    <strong>Tổng tiền: @total.ToString("#,##0")<i>&nbsp;(VNĐ)</i></strong>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="date" style="color:#1a8cff;font-size:16px;">
+                    Ngày<b style="color:#000000">&nbsp;@hoadon.ngayBan.Value.Date.ToString("dd")&nbsp;</b>
+                    Tháng<b style="color:#000000">&nbsp;@hoadon.ngayBan.Value.Date.ToString("MM")&nbsp;</b>
+                    Năm<b style="color:#000000">&nbsp;@hoadon.ngayBan.Value.Date.ToString("yyyy")&nbsp;</b>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <a href="/HoaDonBans"><h3>Quay lại</h3></a>
+    </div>
+</body>
+</html>

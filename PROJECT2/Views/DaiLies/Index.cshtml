@@ -1,0 +1,65 @@
+﻿@using EF;
+@{
+    List<DaiLy> list = ViewBag.daili as List<DaiLy>;
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <script>
+        function check() {
+            var a = confirm("Bạn có chắc muốn xóa");
+            if (a == true) {
+                return true;
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+    <div class="container">
+        <h2 class="text-center">Danh sách đại lý</h2>
+        <h3><a href="/DaiLies/Create">Tạo đại lý mới</a></h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên đại lý</th>
+                    <th>Địa chỉ</th>
+                    <th>Số điện thoại</th>
+                    <th style="width:14%">Tiền đại lý nợ<i>&nbsp;(VNĐ)</i></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            @for (int i = 0; i < list.Count; i++)
+            {
+                <tr>
+                    <td>@list[i].tenDaiLy</td>
+                    <td>@list[i].diaChi</td>
+                    <td>@list[i].sDT</td>
+                    <td align="right">@{
+                        double a = double.Parse(list[i].tienDLNo);
+                    }@a.ToString("#,##0")</td>
+                  <td align="right">                      
+                      <a href="/DaiLies/Details?id=@list[i].idDL">Chi tiết sách đại lý lấy</a>&nbsp;|
+                      <a href="/DaiLies/Edit?id=@list[i].idDL">Sửa</a>&nbsp;|
+                      <a href="/DaiLies/Delete?id=@list[i].idDL" onclick="return check()">Xóa</a>
+                  </td>
+              </tr>
+            }
+        </table>
+    </div>   
+</body>
+</html>
+
+
+
+
+
+

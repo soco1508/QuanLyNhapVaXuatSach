@@ -1,0 +1,68 @@
+﻿@using EF;
+@{
+    List<DaiLy> dl = ViewBag.dl as List<DaiLy>;
+    ViewBag.Title = "Trang chủ";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+
+    <div class="container">
+        <h2><strong>Thông tin đại lý</strong></h2>
+        <br />
+        <div class="row">
+            <form class="form-horizontal" action="/XuatSach/Payment2" method="post">
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Tên đại lý</label>
+                    <div class="col-xs-3">
+                        <select class="form-control" name="iddl">
+                            @for (int i = 0; i < dl.Count; i++)
+                            {
+                                <option value="@dl[i].idDL">@dl[i].tenDaiLy</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Địa chỉ</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" name="diachi">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Số điện thoại</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" name="sdt">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Người nhận</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" name="nguoinhan">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Ngày xuất</label>
+                    <div class="col-xs-3">
+                        <input type='date' min="1970-01-01" max="3000-12-31" class="form-control" name="ngayxuat" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Xuất phiếu</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

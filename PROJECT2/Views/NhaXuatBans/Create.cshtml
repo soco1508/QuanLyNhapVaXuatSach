@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+    <div class="container">
+
+        <h2 class="text-left">Tạo mới nhà xuất bản</h2>
+        <br />
+        <form class="form-horizontal" method="post" action="/NhaXuatBans/Create2">            
+            <div class="form-group" style="width:20%">
+                <label>Tên nhà xuất bản</label>
+                <input type="text" class="form-control" name="ten" placeholder="Hồng Phúc Thạnh Đông"/>
+            </div>
+            <div class="form-group" style="width:24%">
+                <label>Địa chỉ</label>
+                <input type="text" class="form-control" name="diachi" placeholder="273 An Dương Vương, Q.5, TP.HCM" />
+            </div>
+            <div class="form-group" style="width:10%">
+                <label>Số điện thoại</label>
+                <input type="text" class="form-control" name="sdt" placeholder="0932603689"/>
+            </div>
+            
+            <div class="form-group" style="width:6%">
+                <input type="submit" class="btn btn-default" value="Tạo" />
+            </div>
+        </form>
+
+        <a href="/NhaXuatBans/Index"><h3>Quay lại</h3></a>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+

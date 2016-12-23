@@ -1,0 +1,63 @@
+﻿@using EF;
+@{
+    List<NhaXuatBan> nxb = ViewBag.nxb as List<NhaXuatBan>;
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Công ty phát hành sách 22+</title>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <script>
+        function check() {
+            var a = confirm("Bạn có chắc muốn xóa");
+            if (a == true) {
+                return true;
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+    @RenderPage("/Views/Shared/header.cshtml")
+
+    <div class="container"> 
+        <h2 class="text-center">Danh sách nhà xuất bản</h2>
+        <h3><a href="/NhaXuatBans/Create">Tạo nhà xuất bản mới</a></h3>
+        <table class="table">
+            <tr>
+                <th>Tên nhà xuất bản</th>
+                <th>Địa chỉ</th>
+                <th>Số điện thoại</th>
+                <th style="width:14%">Tiền nợ nhà xuất bản<i>&nbsp;(VNĐ)</i></th>
+                <th></th>
+            </tr>
+            @for(int i = 0;i < nxb.Count;i++)
+            {
+                <tr>
+                    <td>@nxb[i].tenNXB</td>
+                    <td>@nxb[i].diaChi</td>
+                    <td>@nxb[i].sDT</td>
+                    <td align="right">@{
+                        double a = double.Parse(nxb[i].tienNoNXB);
+                    }@a.ToString("#,##0")</td>
+                    <td align="right">                        
+                        <a href="/NhaXuatBans/Details?id=@nxb[i].idNXB">Chi tiết sách nhà xuất bản nhập</a>&nbsp;|
+                        <a href="/NhaXuatBans/Edit?id=@nxb[i].idNXB">Sửa</a>&nbsp;|
+                        <a href="/NhaXuatBans/Delete?id=@nxb[i].idNXB" onclick="return check()">Xóa</a>                
+                    </td>
+                </tr>
+            }
+       </table>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
