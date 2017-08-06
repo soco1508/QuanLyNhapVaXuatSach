@@ -57,6 +57,7 @@ namespace PROJECT2.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            string t = "text";
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
